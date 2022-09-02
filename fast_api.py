@@ -10,7 +10,6 @@ def use_model(text):
   tfidf = pickle.load(open(dirtfidf, 'rb'))
   text = [text,]
   features = tfidf.transform(text)
-
   dirclf = os.path.join(dirfile,'clfmodel.pkl')
   loaded_model = pickle.load(open(dirclf, 'rb'))
   y_pred = loaded_model.predict(features)
