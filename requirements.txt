@@ -7,3 +7,4 @@ scikit_learn==1.1.2
 tweet_preprocessor==0.6.0
 youtube-comment-downloader==0.1.61
 gunicorn==20.1.0
+uvicorn==0.18.2
