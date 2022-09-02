@@ -23,6 +23,10 @@ def get_comments(id: str):
 
   return data
 
+@app.get("/")
+def home():
+  return "hello world"
+
 
 
 
