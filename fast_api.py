@@ -40,7 +40,7 @@ def get_comments(id: str):
     for x in range( 0 , len(final_data) ):
       #print(use_model( final_data[x]['text'] ) )
       dict0 = dict(final_data[x])
-      dict0['class'] =   use_model( final_data[x]['text'] )[0]
+      dict0['class_label'] =   use_model( final_data[x]['text'] )[0]
       
       final_data[x] = dict0
 
