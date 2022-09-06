@@ -3,6 +3,26 @@ import os
 from fastapi import FastAPI
 import json
 import pickle
+from pydantic import BaseModel
+from typing import List
+#uvicorn fast_api:app --reload
+
+class comment(BaseModel):
+  cid: str
+  text: str
+  time: str
+  author: str
+  channel: str
+  votes: int
+  photo: str
+  heart: bool
+  time_parsed: float
+  class_label: str
+  signature:str
+
+class receive(BaseModel):
+  data:List
+        
 
 def use_model(text):
   dirfile = os.path.dirname(os.path.realpath(__file__))
@@ -19,6 +39,25 @@ def use_model(text):
 
 #uvicorn fast_api:app --reload
 app = FastAPI()
+
+from fastapi.middleware.cors import CORSMiddleware
+
+app = FastAPI()
+
+origins = [
+    "http://localhost.tiangolo.com",
+    "https://localhost.tiangolo.com",
+    "http://localhost",
+    "http://localhost:3000",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/get-comments/{id}")
 def get_comments(id: str):
@@ -57,6 +96,13 @@ def get_comments(id: str):
 def home():
   return "hello world"
 
+@app.post("/add-correction/")
+async def create_item(item: receive):
 
+  import json
+  with open('data.json', 'a', encoding='utf-8') as f:
+    for x in item.data:
+      json.dump(dict(x), f, ensure_ascii=False, indent=4)
+  return item
 
 
