@@ -50,6 +50,7 @@ origins = [
     "http://localhost",
     "http://localhost:3000",
     "https://youtubecommentlabeler.vercel.app/",
+    "http://youtubecommentlabeler.vercel.app/",
 ]
 
 app.add_middleware(
