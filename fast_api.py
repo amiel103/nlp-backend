@@ -44,14 +44,16 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-origins = [
-    "http://localhost.tiangolo.com",
-    "https://localhost.tiangolo.com",
-    "http://localhost",
-    "http://localhost:3000",
-    "https://youtubecommentlabeler.vercel.app/",
-    "http://youtubecommentlabeler.vercel.app/",
-]
+# origins = [
+#     "http://localhost.tiangolo.com",
+#     "https://localhost.tiangolo.com",
+#     "http://localhost",
+#     "http://localhost:3000",
+#     "https://youtubecommentlabeler.vercel.app/",
+#     "http://youtubecommentlabeler.vercel.app/",
+# ]
+
+origins = ["*"]
 
 app.add_middleware(
     CORSMiddleware,
